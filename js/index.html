@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLR Food Freaks – Home</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav"></div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <p class="hero-eyebrow">Stop de "ontkoking"</p>
+        <h1>Welkom!<br><em>Stop de Ontkoking</em></h1>
+        <p>Welkom toon oll beck, eccommiscio saleismem hostiness ver Minerarier costs lorem becministuren books ver Miscerorors notirium sans sens semitatellsion?</p>
+        <a href="recepten.html" class="btn btn-accent">meer info</a>
+      </div>
+      <div>
+        <img class="hero-img"
+          src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&h=450&fit=crop&auto=format"
+          alt="Mensen koken samen">
+      </div>
+    </div>
+  </section>
+
+  <!-- Searchbar -->
+  <div class="searchbar">
+    <div class="searchbar-inner">
+      <div class="search-row">
+        <input type="text" id="searchInput" class="form-control" placeholder="Zoek recepten...">
+        <button class="btn btn-primary" onclick="doSearch()">🔍</button>
+      </div>
+      <div class="quick-filters">
+        <span>Quick Filter:</span>
+        <span class="filter-tag" onclick="goFilter('#Budget')">#Budget</span>
+        <span class="filter-tag" onclick="goFilter('#Snel')">#Snel</span>
+        <span class="filter-tag" onclick="goFilter('#Vega')">#Vega</span>
+        <span class="filter-tag" onclick="goFilter('#Diner')">#Diner</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured -->
+  <div class="container">
+    <div class="section-heading">
+      <h2 style="font-family:var(--display);font-size:1.4rem;font-weight:600">Featured Recepten</h2>
+    </div>
+    <div class="grid-4" id="featuredGrid"></div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/data.js"></script>
+  <script>
+    renderNav('index.html');
+
+    function doSearch() {
+      const q = document.getElementById('searchInput').value.trim();
+      window.location.href = 'recepten.html' + (q ? '?q=' + encodeURIComponent(q) : '');
+    }
+    document.getElementById('searchInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') doSearch();
+    });
+
+    function goFilter(tag) {
+      window.location.href = 'recepten.html?tag=' + encodeURIComponent(tag);
+    }
+
+    function renderFeatured() {
+      const recepten = getRecepten().slice(0, 4);
+      const grid = document.getElementById('featuredGrid');
+      grid.innerHTML = recepten.map(r => `
+        <div class="card recipe-card" onclick="window.location.href='recept-detail.html?id=${r.id}'">
+          <div class="recipe-thumb">🍽️</div>
+          <div class="recipe-info">
+            <div class="recipe-title">${r.title}</div>
+            <div class="stars">${stars(r.rating)}</div>
+            <div class="recipe-meta">⏱ ${r.time}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+    renderFeatured();
+  </script>
+</body>
+</html>

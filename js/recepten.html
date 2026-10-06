@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recepten Overzicht – Food Freaks</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav"></div>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <h1>Food Freaks | Recepten Overzicht</h1>
+    </div>
+  </div>
+  <div class="page-sub"><div class="page-sub-inner">Food Freaks | Alle Recepten</div></div>
+
+  <div class="container">
+    <div class="layout-sidebar">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-card">
+          <p class="sidebar-title">Dynamic Filters</p>
+
+          <div class="sidebar-section">
+            <h4>Type gerecht</h4>
+            <label><input type="checkbox" value="Vega" onchange="applyFilters()"> Vega</label>
+            <label><input type="checkbox" value="Vlees" onchange="applyFilters()"> Vlees</label>
+            <label><input type="checkbox" value="Vis" onchange="applyFilters()"> Vis</label>
+            <label><input type="checkbox" value="Dessert" onchange="applyFilters()"> Dessert</label>
+          </div>
+
+          <div class="sidebar-section">
+            <h4>Bereidingstijd</h4>
+            <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted-fg);margin-bottom:.3rem">
+              <span>5 min</span><span id="sliderVal">100 min</span>
+            </div>
+            <input type="range" id="timeSlider" min="5" max="120" value="120" style="width:100%;accent-color:var(--primary)" oninput="document.getElementById('sliderVal').textContent=this.value+' min';applyFilters()">
+          </div>
+
+          <div class="sidebar-section">
+            <h4>Dieet</h4>
+            <label><input type="checkbox" value="glutenvrij" onchange="applyFilters()"> Glutenvrij</label>
+            <label><input type="checkbox" value="lactosevrij" onchange="applyFilters()"> Lactosevrij</label>
+            <label><input type="checkbox" value="vegan" onchange="applyFilters()"> Vegan</label>
+          </div>
+
+          <div class="sidebar-section">
+            <h4>Sorteer op</h4>
+            <select id="sortSelect" onchange="applyFilters()">
+              <option value="">Standaard</option>
+              <option value="rating">Beoordeling</option>
+              <option value="time">Bereidingstijd</option>
+            </select>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <main style="flex:1">
+        <div class="section-heading">
+          <h2>Alle Recepten</h2>
+          <select id="catSelect" onchange="applyFilters()" style="font-size:.8rem;border:1px solid var(--border);border-radius:5px;padding:.3rem .6rem;background:var(--card)">
+            <option value="">Alle Recepten</option>
+            <option value="Vega">Vega</option>
+            <option value="Vlees">Vlees</option>
+            <option value="Vis">Vis</option>
+            <option value="Dessert">Dessert</option>
+          </select>
+        </div>
+        <div class="grid-4" id="receptenGrid"></div>
+        <p id="noResults" style="display:none;color:var(--muted-fg);font-size:.85rem;padding:2rem 0">Geen recepten gevonden.</p>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/data.js"></script>
+  <script>
+    renderNav('recepten.html');
+
+    const params = new URLSearchParams(window.location.search);
+    const initQ   = params.get('q')   || '';
+    const initTag = params.get('tag') || '';
+
+    function applyFilters() {
+      let list = getRecepten();
+      const checked = [...document.querySelectorAll('.sidebar-section input[type=checkbox]:checked')].map(c => c.value);
+      const typeChecked = checked.filter(v => ['Vega','Vlees','Vis','Dessert'].includes(v));
+      const maxTime = parseInt(document.getElementById('timeSlider').value);
+      const cat = document.getElementById('catSelect').value;
+      const sort = document.getElementById('sortSelect').value;
+
+      if (typeChecked.length) list = list.filter(r => typeChecked.includes(r.cat));
+      if (cat) list = list.filter(r => r.cat === cat);
+      list = list.filter(r => parseInt(r.time) <= maxTime);
+      if (initQ) list = list.filter(r => r.title.toLowerCase().includes(initQ.toLowerCase()));
+      if (sort === 'rating') list = [...list].sort((a, b) => b.rating - a.rating);
+      if (sort === 'time')   list = [...list].sort((a, b) => parseInt(a.time) - parseInt(b.time));
+
+      const grid = document.getElementById('receptenGrid');
+      const none = document.getElementById('noResults');
+      if (!list.length) { grid.innerHTML = ''; none.style.display = 'block'; return; }
+      none.style.display = 'none';
+      grid.innerHTML = list.map(r => `
+        <div class="card recipe-card" onclick="window.location.href='recept-detail.html?id=${r.id}'">
+          <div class="recipe-thumb">🍲</div>
+          <div class="recipe-info">
+            <div class="recipe-title">${r.title}</div>
+            <div class="stars">${stars(r.rating)}</div>
+            <div class="recipe-meta">⏱ ${r.time} &nbsp;·&nbsp; ${r.cat}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    applyFilters();
+  </script>
+</body>
+</html>
