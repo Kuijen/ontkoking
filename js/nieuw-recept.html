@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nieuw Recept – Food Freaks</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="nav"></div>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <button class="back-btn" onclick="history.back()">← Terug</button>
+      <h1>Invoerpagina | Nieuw Recept (CRUD)</h1>
+    </div>
+  </div>
+  <div class="page-sub"><div class="page-sub-inner">Food Freaks | Nieuw Recept Toevoegen</div></div>
+
+  <div class="container" style="max-width:860px">
+    <!-- Tab bar -->
+    <div class="tabs">
+      <button class="tab-btn active" id="tab1" onclick="switchTab(1)">
+        <span class="tab-num">1</span> Algemene Informatie
+      </button>
+      <button class="tab-btn" id="tab2" onclick="switchTab(2)">
+        <span class="tab-num">2</span> Ingrediëntenlijst
+      </button>
+      <button class="tab-btn" id="tab3" onclick="switchTab(3)">
+        <span class="tab-num">3</span> Bereidingsstappen
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <!-- Tab 1 -->
+        <div class="tab-panel active" id="panel1">
+          <h2 style="font-family:var(--display);font-size:1.2rem;font-weight:600;margin-bottom:1.25rem">Algemene Informatie</h2>
+          <div style="max-width:460px">
+            <div class="form-group">
+              <label>Titel</label>
+              <input type="text" id="f_title" class="form-control" placeholder="Naam van het recept...">
+            </div>
+            <div class="form-group">
+              <label>Categorie</label>
+              <select id="f_cat" class="form-control">
+                <option value="">Kies categorie</option>
+                <option>Vega</option>
+                <option>Vlees</option>
+                <option>Vis</option>
+                <option>Dessert</option>
+                <option>Soep</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Bereidingstijd</label>
+              <input type="text" id="f_time" class="form-control" placeholder="bijv. 30 min">
+            </div>
+            <div class="form-group">
+              <label>Afbeelding</label>
+              <div class="upload-zone" onclick="alert('In productie: upload hier je foto.')">
+                <span style="font-size:1.8rem">⬆️</span>
+                <span>Klik om een afbeelding te uploaden</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2 -->
+        <div class="tab-panel" id="panel2">
+          <h2 style="font-family:var(--display);font-size:1.2rem;font-weight:600;margin-bottom:1.25rem">Ingrediëntenlijst</h2>
+          <div id="ingList" style="max-width:480px"></div>
+          <button class="btn btn-outline btn-sm" onclick="addIngredient()" style="margin-top:.5rem">+ Ingrediënt toevoegen</button>
+        </div>
+
+        <!-- Tab 3 -->
+        <div class="tab-panel" id="panel3">
+          <h2 style="font-family:var(--display);font-size:1.2rem;font-weight:600;margin-bottom:1.25rem">Bereidingsstappen</h2>
+          <div id="stepList" style="max-width:560px"></div>
+          <button class="btn btn-outline btn-sm" onclick="addStep()" style="margin-top:.5rem">+ Stap toevoegen</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="errorMsg" class="error-msg" style="display:none;margin-top:1rem"></div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:1.25rem">
+      <button class="btn btn-outline" onclick="window.location.href='recepten.html'">Annuleren</button>
+      <div style="display:flex;gap:.5rem">
+        <button class="btn btn-outline" id="prevBtn" onclick="prevTab()" style="display:none">← Vorige</button>
+        <button class="btn btn-primary" id="nextBtn" onclick="nextTab()">Volgende →</button>
+        <button class="btn btn-accent" id="saveBtn" onclick="saveForm()" style="display:none">Opslaan</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/data.js"></script>
+  <script>
+    renderNav('nieuw-recept.html');
+    let currentTab = 1;
+    let ingredients = [{ amount: '', name: '' }];
+    let steps = [{ text: '' }];
+
+    function switchTab(n) {
+      for (let i = 1; i <= 3; i++) {
+        document.getElementById('tab' + i).classList.toggle('active', i === n);
+        document.getElementById('panel' + i).classList.toggle('active', i === n);
+      }
+      document.getElementById('prevBtn').style.display = n > 1 ? '' : 'none';
+      document.getElementById('nextBtn').style.display = n < 3 ? '' : 'none';
+      document.getElementById('saveBtn').style.display = n === 3 ? '' : 'none';
+      currentTab = n;
+      if (n === 2) renderIngredients();
+      if (n === 3) renderSteps();
+    }
+
+    function nextTab() { if (currentTab < 3) switchTab(currentTab + 1); }
+    function prevTab() { if (currentTab > 1) switchTab(currentTab - 1); }
+
+    function renderIngredients() {
+      document.getElementById('ingList').innerHTML = ingredients.map((ing, i) => `
+        <div class="ing-row">
+          <input type="text" class="form-control amount" placeholder="Hoeveelheid" value="${ing.amount}"
+            oninput="ingredients[${i}].amount = this.value">
+          <input type="text" class="form-control" placeholder="Ingrediënt" value="${ing.name}" style="flex:1"
+            oninput="ingredients[${i}].name = this.value">
+          <button class="remove-btn" onclick="removeIngredient(${i})">✕</button>
+        </div>
+      `).join('');
+    }
+
+    function addIngredient() { ingredients.push({ amount: '', name: '' }); renderIngredients(); }
+    function removeIngredient(i) { if (ingredients.length > 1) { ingredients.splice(i, 1); renderIngredients(); } }
+
+    function renderSteps() {
+      document.getElementById('stepList').innerHTML = steps.map((s, i) => `
+        <div style="display:flex;gap:.5rem;align-items:flex-start;margin-bottom:.6rem">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--primary);color:var(--prim-fg);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;margin-top:.5rem">${i + 1}</div>
+          <textarea class="form-control" rows="2" style="flex:1;resize:none" placeholder="Stap ${i + 1}..."
+            oninput="steps[${i}].text = this.value">${s.text}</textarea>
+          <button class="remove-btn" onclick="removeStep(${i})" style="margin-top:.5rem">✕</button>
+        </div>
+      `).join('');
+    }
+
+    function addStep() { steps.push({ text: '' }); renderSteps(); }
+    function removeStep(i) { if (steps.length > 1) { steps.splice(i, 1); renderSteps(); } }
+
+    function showError(msg) {
+      const el = document.getElementById('errorMsg');
+      el.textContent = msg;
+      el.style.display = msg ? 'block' : 'none';
+    }
+
+    function saveForm() {
+      const title = document.getElementById('f_title').value.trim();
+      const cat   = document.getElementById('f_cat').value;
+      const time  = document.getElementById('f_time').value.trim();
+      if (!title) { showError('Vul een titel in.'); switchTab(1); return; }
+      if (!cat)   { showError('Kies een categorie.'); switchTab(1); return; }
+
+      const user = getSession();
+      const recept = {
+        id: nextId(),
+        title,
+        cat,
+        time: time || '30 min',
+        rating: 0,
+        author: user ? user.username : 'Anoniem',
+        status: 'Concept',
+        ingredients: ingredients.filter(i => i.name.trim()).map(i => (i.amount ? i.amount + ' ' : '') + i.name),
+        steps: steps.filter(s => s.text.trim()).map(s => s.text),
+        comments: []
+      };
+      saveRecept(recept);
+      showError('');
+      window.location.href = 'dashboard.html';
+    }
+
+    renderIngredients();
+  </script>
+</body>
+</html>
