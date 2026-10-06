@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>Mijn keuken – Food Freaks</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/pages/dashboard.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Naar de inhoud</a>
+  <header id="site-header" class="site-header"></header>
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <h1>Mijn keuken</h1>
+      <p>Je favorieten en je eigen recepten op één plek.</p>
+    </div>
+  </section>
+
+  <main id="main" class="container">
+    <section class="stats" id="stats" aria-label="Overzicht"></section>
+
+    <div class="dash-grid">
+      <div>
+        <section class="section" aria-labelledby="favoritesTitle">
+          <div class="section-heading"><h2 id="favoritesTitle">Mijn favorieten</h2></div>
+          <div class="grid grid-compact" id="favoritesGrid"></div>
+        </section>
+      </div>
+
+      <div>
+        <section class="section" aria-labelledby="myRecipesTitle">
+          <div class="section-heading">
+            <h2 id="myRecipesTitle">Mijn recepten</h2>
+            <a class="btn btn-primary btn-sm" href="nieuw-recept.html">Nieuw recept</a>
+          </div>
+          <div id="myRecipes"></div>
+        </section>
+
+        <section class="section" aria-labelledby="communityTitle">
+          <div class="section-heading"><h2 id="communityTitle">Nieuw van de community</h2></div>
+          <div class="card card-body" id="community"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

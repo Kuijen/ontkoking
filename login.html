@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>Inloggen – Food Freaks</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/pages/login.js" defer></script>
+</head>
+<body>
+  <main class="login-page">
+    <div class="login-box">
+      <header class="login-logo">
+        <h1>GLR <span>Food Freaks</span></h1>
+        <p>Stop de ontkoking</p>
+      </header>
+
+      <div class="card">
+        <div class="login-tabs" role="tablist" aria-label="Inloggen of account aanmaken">
+          <button class="login-tab" type="button" role="tab" data-mode="login" aria-selected="true">Inloggen</button>
+          <button class="login-tab" type="button" role="tab" data-mode="register" aria-selected="false">Account aanmaken</button>
+        </div>
+
+        <form class="login-form" id="authForm" novalidate>
+          <p class="form-alert" id="formAlert" role="alert" hidden></p>
+
+          <div class="field">
+            <label for="username">Gebruikersnaam</label>
+            <input type="text" id="username" name="username" class="input" placeholder="jouwgebruikersnaam" autocomplete="username">
+            <p class="field-error" id="err-username" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="password">Wachtwoord</label>
+            <input type="password" id="password" name="password" class="input" placeholder="Minimaal 6 tekens" autocomplete="current-password">
+            <p class="field-error" id="err-password" hidden></p>
+          </div>
+
+          <div class="field" id="confirmGroup" hidden>
+            <label for="confirm">Bevestig wachtwoord</label>
+            <input type="password" id="confirm" name="confirm" class="input" placeholder="Herhaal je wachtwoord" autocomplete="new-password">
+            <p class="field-error" id="err-confirm" hidden></p>
+          </div>
+
+          <button class="btn btn-primary btn-block" type="submit" id="submitBtn">Inloggen</button>
+        </form>
+      </div>
+
+      <p class="login-hint" id="switchHint">
+        Nog geen account? <button type="button" id="toRegisterBtn">Maak er een aan</button>
+      </p>
+    </div>
+  </main>
+</body>
+</html>

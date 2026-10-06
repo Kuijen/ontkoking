@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>GLR Food Freaks – Home</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/pages/home.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Naar de inhoud</a>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-inner">
+        <div>
+          <h1 id="heroTitle">Stop de <em>ontkoking</em></h1>
+          <p>Ontdek recepten van de community, bewaar je favorieten en deel je eigen gerechten. Gewoon eten dat klopt, zonder overgekookte groenten.</p>
+          <a href="recepten.html" class="btn btn-primary">Bekijk alle recepten</a>
+        </div>
+        <img class="hero-img" data-category=""
+          src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&amp;h=450&amp;fit=crop&amp;auto=format"
+          alt="Mensen koken samen in een keuken">
+      </div>
+    </section>
+
+    <section class="searchbar" aria-label="Recepten zoeken">
+      <div class="searchbar-inner">
+        <form id="searchForm" class="search-row" role="search">
+          <label class="visually-hidden" for="searchInput">Zoek recepten</label>
+          <input type="search" id="searchInput" class="input" placeholder="Zoek op titel of ingrediënt…" autocomplete="off">
+          <button class="btn btn-primary" type="submit">Zoeken</button>
+        </form>
+        <div class="quick-filters" id="quickFilters">
+          <span>Snel filteren:</span>
+          <button class="chip" type="button" data-tag="Budget">#Budget</button>
+          <button class="chip" type="button" data-tag="Snel">#Snel</button>
+          <button class="chip" type="button" data-tag="Vega">#Vega</button>
+          <button class="chip" type="button" data-tag="Diner">#Diner</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" aria-labelledby="featuredTitle">
+      <div class="section-heading">
+        <h2 id="featuredTitle">Uitgelichte recepten</h2>
+        <a class="btn btn-ghost btn-sm" href="recepten.html">Alles bekijken</a>
+      </div>
+      <div class="grid" id="featuredGrid"></div>
+    </section>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
