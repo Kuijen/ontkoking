@@ -1,27 +1,18 @@
 /* Inloggen, registreren en menu.
-   Alles wordt opgeslagen in localStorage: handig voor een schoolproject,
-   maar geen echte beveiliging (wachtwoorden staan leesbaar in de browser). */
+   Alles wordt opgeslagen in localStorage: handig voor een schoolproject. */
 (function () {
     'use strict';
 
     var USERS_KEY = 'ff-users';
     var SESSION_KEY = 'ff-session';
 
-    // Startgebruikers (alleen normale gebruikers, geen admin in broncode)
-    var SEED_USERS = [
-        { username: 'Bekkeer', password: 'welkom123', role: 'user' },
-        { username: 'Taan',    password: 'welkom123', role: 'user' }
-    ];
-
-    // Instellingen voor de verborgen admin-inlog
-    var HIDDEN_ADMIN_NAME = 'admin';
-    var HIDDEN_ADMIN_PASS = 'admin123';
+    // Geen hardcoded gebruikers meer; de lijst start helemaal leeg
+    var SEED_USERS = [];
 
     var NEEDS_LOGIN = ['dashboard.html', 'nieuw-recept.html', 'admin.html'];
     var NEEDS_ADMIN = ['admin.html'];
     var SAFE_NEXT = /^[a-z-]+\.html$/;
 
-    /* ---------- opslag ---------- */
     function read(key) {
         try { return JSON.parse(localStorage.getItem(key)); } catch (e) { return null; }
     }
@@ -30,7 +21,7 @@
     }
     function getUsers() {
         var list = read(USERS_KEY);
-        if (!Array.isArray(list) || !list.length) {
+        if (!Array.isArray(list)) {
             list = SEED_USERS.slice();
             write(USERS_KEY, list);
         }
@@ -49,7 +40,6 @@
         try { localStorage.removeItem(SESSION_KEY); } catch (e) { /* niks */ }
     }
 
-    /* ---------- pagina beveiligen ---------- */
     var page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
     var user = currentUser();
 
@@ -57,12 +47,11 @@
         location.replace('login.html?next=' + encodeURIComponent(page));
         return;
     }
-    if (NEEDS_ADMIN.indexOf(page) !== -1 && user && user.role !== 'admin') {
+    if (NEEDS_ADMIN.indexOf(page) !== -1 && (!user || user.role !== 'admin')) {
         location.replace('index.html');
         return;
     }
 
-    /* ---------- menu ---------- */
     function renderNav() {
         var box = document.querySelector('.nav-user');
         if (box) {
@@ -100,7 +89,6 @@
         }
     }
 
-    /* ---------- loginpagina ---------- */
     function showError(form, message, fields) {
         clearError(form);
         var box = document.createElement('div');
@@ -139,32 +127,12 @@
 
         loginForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            var typedName = loginName.value.trim();
-            var typedPass = loginPass.value;
-
-            if (!typedName || !typedPass) {
-                showError(loginForm, 'Vul je gebruikersnaam en wachtwoord in.',
-                    [typedName ? loginPass : loginName]);
+            if (!loginName.value.trim() || !loginPass.value) {
+                showError(loginForm, 'Vul je gebruikersnaam en wachtwoord in.', [loginPass]);
                 return;
             }
-
-            // Check op de verborgen admin-inlog
-            if (typedName.toLowerCase() === HIDDEN_ADMIN_NAME.toLowerCase() && typedPass === HIDDEN_ADMIN_PASS) {
-                var adminUser = findUser(HIDDEN_ADMIN_NAME);
-                if (!adminUser) {
-                    // Maak de admin-gebruiker aan in localStorage als deze er nog niet is
-                    adminUser = { username: HIDDEN_ADMIN_NAME, password: HIDDEN_ADMIN_PASS, role: 'admin' };
-                    var users = getUsers();
-                    users.push(adminUser);
-                    write(USERS_KEY, users);
-                }
-                logIn(adminUser);
-                location.href = target;
-                return;
-            }
-
-            var found = findUser(typedName);
-            if (!found || found.password !== typedPass) {
+            var found = findUser(loginName.value);
+            if (!found || found.password !== loginPass.value) {
                 showError(loginForm, 'Gebruikersnaam of wachtwoord klopt niet.', [loginName, loginPass]);
                 return;
             }
@@ -177,7 +145,7 @@
             var name = regName.value.trim();
             if (name.length < 3) {
                 showError(regForm, 'Kies een gebruikersnaam van minimaal 3 tekens.', [regName]);
-            } else if (findUser(name) || name.toLowerCase() === HIDDEN_ADMIN_NAME.toLowerCase()) {
+            } else if (findUser(name)) {
                 showError(regForm, 'Deze gebruikersnaam is al in gebruik.', [regName]);
             } else if (regPass.value.length < 6) {
                 showError(regForm, 'Je wachtwoord moet minimaal 6 tekens hebben.', [regPass]);
