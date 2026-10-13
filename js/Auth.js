@@ -7,12 +7,15 @@
     var USERS_KEY = 'ff-users';
     var SESSION_KEY = 'ff-session';
 
-    // Startgebruikers, worden alleen de eerste keer aangemaakt
+    // Startgebruikers (alleen normale gebruikers, geen admin in broncode)
     var SEED_USERS = [
-        { username: 'ikbenadmin123', password: 'admin123',  role: 'admin' },
-        { username: 'Bekkeer',       password: 'welkom123', role: 'user' },
-        { username: 'Taan',          password: 'welkom123', role: 'user' }
+        { username: 'Bekkeer', password: 'welkom123', role: 'user' },
+        { username: 'Taan',    password: 'welkom123', role: 'user' }
     ];
+
+    // Instellingen voor de verborgen admin-inlog
+    var HIDDEN_ADMIN_NAME = 'admin';
+    var HIDDEN_ADMIN_PASS = 'admin123';
 
     var NEEDS_LOGIN = ['dashboard.html', 'nieuw-recept.html', 'admin.html'];
     var NEEDS_ADMIN = ['admin.html'];
@@ -136,13 +139,32 @@
 
         loginForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            if (!loginName.value.trim() || !loginPass.value) {
+            var typedName = loginName.value.trim();
+            var typedPass = loginPass.value;
+
+            if (!typedName || !typedPass) {
                 showError(loginForm, 'Vul je gebruikersnaam en wachtwoord in.',
-                    [loginName.value.trim() ? loginPass : loginName]);
+                    [typedName ? loginPass : loginName]);
                 return;
             }
-            var found = findUser(loginName.value);
-            if (!found || found.password !== loginPass.value) {
+
+            // Check op de verborgen admin-inlog
+            if (typedName.toLowerCase() === HIDDEN_ADMIN_NAME.toLowerCase() && typedPass === HIDDEN_ADMIN_PASS) {
+                var adminUser = findUser(HIDDEN_ADMIN_NAME);
+                if (!adminUser) {
+                    // Maak de admin-gebruiker aan in localStorage als deze er nog niet is
+                    adminUser = { username: HIDDEN_ADMIN_NAME, password: HIDDEN_ADMIN_PASS, role: 'admin' };
+                    var users = getUsers();
+                    users.push(adminUser);
+                    write(USERS_KEY, users);
+                }
+                logIn(adminUser);
+                location.href = target;
+                return;
+            }
+
+            var found = findUser(typedName);
+            if (!found || found.password !== typedPass) {
                 showError(loginForm, 'Gebruikersnaam of wachtwoord klopt niet.', [loginName, loginPass]);
                 return;
             }
@@ -155,7 +177,7 @@
             var name = regName.value.trim();
             if (name.length < 3) {
                 showError(regForm, 'Kies een gebruikersnaam van minimaal 3 tekens.', [regName]);
-            } else if (findUser(name)) {
+            } else if (findUser(name) || name.toLowerCase() === HIDDEN_ADMIN_NAME.toLowerCase()) {
                 showError(regForm, 'Deze gebruikersnaam is al in gebruik.', [regName]);
             } else if (regPass.value.length < 6) {
                 showError(regForm, 'Je wachtwoord moet minimaal 6 tekens hebben.', [regPass]);
