@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Recepten – Food Freaks</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme.js"></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/filters.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Naar de inhoud</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">GLR <span>Food Freaks</span></a>
+    <input class="nav-check" type="checkbox" id="navCheck" aria-label="Menu openen">
+    <label class="nav-toggle" for="navCheck" aria-hidden="true">☰</label>
+    <nav class="site-nav" aria-label="Hoofdmenu">
+      <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="recepten.html" aria-current="page">Recepten</a></li><li><a href="nieuw-recept.html">Toevoegen</a></li><li><a href="dashboard.html">Mijn keuken</a></li><li hidden><a href="admin.html">Admin</a></li></ul>
+      <div class="nav-user"><a class="btn btn-outline btn-sm" href="login.html">Inloggen</a></div>
+    </nav>
+  </div>
+</header>
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <h1>Recepten</h1>
+    <p>Zoek, filter en sorteer alle gepubliceerde recepten.</p>
+  </div>
+</section>
+
+<main id="main" class="container">
+  <div class="layout-sidebar">
+    <aside aria-label="Filters">
+      <details class="card filters" open>
+        <summary>Filters</summary>
+        <form class="filters-body" action="recepten.html">
+          <div class="field field-flush">
+            <label for="q">Zoeken</label>
+            <input type="search" id="q" name="q" class="input" placeholder="Titel of ingrediënt">
+          </div>
+          <fieldset>
+            <legend>Type gerecht</legend>
+            <label class="check"><input type="checkbox" name="category" value="Vega"> Vega</label>
+            <label class="check"><input type="checkbox" name="category" value="Vlees"> Vlees</label>
+            <label class="check"><input type="checkbox" name="category" value="Vis"> Vis</label>
+            <label class="check"><input type="checkbox" name="category" value="Soep"> Soep</label>
+            <label class="check"><input type="checkbox" name="category" value="Dessert"> Dessert</label>
+          </fieldset>
+          <div>
+            <label class="field-label" for="maxMinutes">Bereidingstijd</label>
+            <input type="range" id="maxMinutes" name="maxMinutes" min="5" max="120" step="5" value="120">
+            <div class="range-labels"><span>5 min</span><span>Alle tijden</span></div>
+          </div>
+          <fieldset>
+            <legend>Dieet</legend>
+            <label class="check"><input type="checkbox" name="diet" value="glutenvrij"> Glutenvrij</label>
+            <label class="check"><input type="checkbox" name="diet" value="lactosevrij"> Lactosevrij</label>
+            <label class="check"><input type="checkbox" name="diet" value="vegan"> Vegan</label>
+          </fieldset>
+          <div class="field field-flush">
+            <label for="sort">Sorteren op</label>
+            <select id="sort" name="sort" class="input">
+              <option>Standaard</option><option>Beoordeling</option><option>Bereidingstijd</option><option>Nieuwste eerst</option>
+            </select>
+          </div>
+          <button type="reset" class="btn btn-outline btn-block">Filters wissen</button>
+        </form>
+      </details>
+    </aside>
+
+    <section aria-labelledby="resultsTitle">
+      <div class="results-head">
+        <h2 id="resultsTitle" class="visually-hidden">Zoekresultaten</h2>
+        <p class="muted">6 recepten gevonden</p>
+        <div class="active-filters"></div>
+      </div>
+      <div class="grid">
+        <article class="card recipe-card" data-category="Vega" data-minutes="25" data-rating="4" data-diet="glutenvrij lactosevrij vegan" data-newest="6" data-search="kikkererwten ui knoflook kokosmelk currypoeder">
+          <a class="recipe-link" href="recept-detail.html">
+            <img class="recipe-img" src="img/vega-curry.jpg" alt="" loading="lazy">
+            <div class="recipe-info">
+              <span class="badge badge-soft">Vega</span>
+              <h3 class="recipe-title">Snelle vega curry</h3>
+              <span class="stars" role="img" aria-label="4 van 5 sterren">★★★★☆</span>
+              <p class="recipe-meta">25 min</p>
+            </div>
+          </a>
+        </article>
+        <article class="card recipe-card" data-category="Vlees" data-minutes="20" data-rating="5" data-diet="glutenvrij lactosevrij" data-newest="5" data-search="kip kipfilet">
+          <a class="recipe-link" href="recept-detail.html">
+            <img class="recipe-img" src="img/kippenfilets.webp" alt="" loading="lazy">
+            <div class="recipe-info">
+              <span class="badge badge-soft">Vlees</span>
+              <h3 class="recipe-title">Airfryer kippenfilets</h3>
+              <span class="stars" role="img" aria-label="5 van 5 sterren">★★★★★</span>
+              <p class="recipe-meta">20 min</p>
+            </div>
+          </a>
+        </article>
+        <article class="card recipe-card" data-category="Vega" data-minutes="35" data-rating="4" data-diet="glutenvrij lactosevrij vegan" data-newest="2" data-search="groenten stoof">
+          <a class="recipe-link" href="recept-detail.html">
+            <img class="recipe-img" src="img/groentestoof.webp" alt="" loading="lazy">
+            <div class="recipe-info">
+              <span class="badge badge-soft">Vega</span>
+              <h3 class="recipe-title">Mediterrane groentestoof</h3>
+              <span class="stars" role="img" aria-label="4 van 5 sterren">★★★★☆</span>
+              <p class="recipe-meta">35 min</p>
+            </div>
+          </a>
+        </article>
+        <article class="card recipe-card" data-category="Vlees" data-minutes="18" data-rating="4" data-diet="" data-newest="1" data-search="gehakt gehaktbal">
+          <a class="recipe-link" href="recept-detail.html">
+            <img class="recipe-img" src="img/gehaktballetjes.avif" alt="" loading="lazy">
+            <div class="recipe-info">
+              <span class="badge badge-soft">Vlees</span>
+              <h3 class="recipe-title">Airfryer gehaktballetjes</h3>
+              <span class="stars" role="img" aria-label="4 van 5 sterren">★★★★☆</span>
+              <p class="recipe-meta">18 min</p>
+            </div>
+          </a>
+        </article>
+        <article class="card recipe-card" data-category="Soep" data-minutes="40" data-rating="5" data-diet="glutenvrij" data-newest="4" data-search="pompoen">
+          <a class="recipe-link" href="recept-detail.html">
+            <img class="recipe-img" src="img/pompoensoep.avif" alt="" loading="lazy">
+            <div class="recipe-info">
+              <span class="badge badge-soft">Soep</span>
+              <h3 class="recipe-title">Romige pompoensoep</h3>
+              <span class="stars" role="img" aria-label="5 van 5 sterren">★★★★★</span>
+              <p class="recipe-meta">40 min</p>
+            </div>
+          </a>
+        </article>
+        <article class="card recipe-card" data-category="Vis" data-minutes="22" data-rating="4" data-diet="glutenvrij lactosevrij" data-newest="3" data-search="zalm vis">
+          <a class="recipe-link" href="recept-detail.html">
+            <img class="recipe-img" src="img/zalm.avif" alt="" loading="lazy">
+            <div class="recipe-info">
+              <span class="badge badge-soft">Vis</span>
+              <h3 class="recipe-title">Zalm uit de oven</h3>
+              <span class="stars" role="img" aria-label="4 van 5 sterren">★★★★☆</span>
+              <p class="recipe-meta">22 min</p>
+            </div>
+          </a>
+        </article>
+        <div class="empty-state" id="emptyState" hidden>
+          <span class="empty-icon" aria-hidden="true">🍽️</span>
+          <h3>Geen recepten gevonden</h3>
+          <p>Probeer een andere zoekterm of haal een filter weg.</p>
+          <button class="btn btn-outline btn-sm" type="button" id="clearFilters">Filters wissen</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner"><span>GLR Food Freaks: stop de ontkoking.</span><span>Schoolproject</span></div>
+</footer>
+</body>
+</html>

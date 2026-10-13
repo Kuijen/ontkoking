@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Nieuw recept – Food Freaks</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme.js"></script>
+  <script src="js/auth.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Naar de inhoud</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">GLR <span>Food Freaks</span></a>
+    <input class="nav-check" type="checkbox" id="navCheck" aria-label="Menu openen">
+    <label class="nav-toggle" for="navCheck" aria-hidden="true">☰</label>
+    <nav class="site-nav" aria-label="Hoofdmenu">
+      <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="recepten.html">Recepten</a></li><li><a href="nieuw-recept.html" aria-current="page">Toevoegen</a></li><li><a href="dashboard.html">Mijn keuken</a></li><li hidden><a href="admin.html">Admin</a></li></ul>
+      <div class="nav-user"><a class="btn btn-outline btn-sm" href="login.html">Inloggen</a></div>
+    </nav>
+  </div>
+</header>
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <a class="back-link" href="dashboard.html">Terug naar mijn keuken</a>
+    <h1>Nieuw recept</h1>
+    <p>Vul de drie onderdelen in en sla je recept op.</p>
+  </div>
+</section>
+
+<main id="main" class="container container-narrow">
+  <form action="dashboard.html">
+    <section class="card form-section" aria-labelledby="infoTitle">
+      <div class="card-body">
+        <h2 class="panel-title" id="infoTitle"><span class="tab-num" aria-hidden="true">1</span> Algemene informatie</h2>
+        <div class="field"><label for="title">Titel</label><input type="text" id="title" class="input" placeholder="Naam van het recept"></div>
+        <div class="field"><label for="category">Categorie</label>
+          <select id="category" class="input"><option>Kies een categorie</option><option>Vega</option><option>Vlees</option><option>Vis</option><option>Soep</option><option>Dessert</option></select></div>
+        <div class="field"><label for="minutes">Bereidingstijd (minuten)</label><input type="number" id="minutes" class="input" min="1" placeholder="Bijvoorbeeld 30"></div>
+        <fieldset class="field"><legend class="field-label">Dieet</legend>
+          <div class="check-group"><label class="check"><input type="checkbox" name="diet" value="glutenvrij"> Glutenvrij</label><label class="check"><input type="checkbox" name="diet" value="lactosevrij"> Lactosevrij</label><label class="check"><input type="checkbox" name="diet" value="vegan"> Vegan</label></div></fieldset>
+        <fieldset class="field"><legend class="field-label">Labels</legend>
+          <div class="check-group"><label class="check"><input type="checkbox" name="tag" value="Budget"> #Budget</label><label class="check"><input type="checkbox" name="tag" value="Diner"> #Diner</label></div></fieldset>
+        <div class="field"><span class="field-label">Afbeelding (optioneel)</span>
+          <label class="upload-zone" for="imageInput"><span aria-hidden="true">📷</span><span>Klik om een afbeelding te kiezen</span><span class="recipe-meta">jpg, png of webp</span></label>
+          <input type="file" id="imageInput" class="visually-hidden" accept="image/*"></div>
+      </div>
+    </section>
+
+    <section class="card form-section" aria-labelledby="ingTitle">
+      <div class="card-body">
+        <h2 class="panel-title" id="ingTitle"><span class="tab-num" aria-hidden="true">2</span> Ingrediënten</h2>
+        <ul class="dynamic-list"><li class="dynamic-row"><input class="input input-amount" type="text" placeholder="Hoeveelheid" aria-label="Hoeveelheid ingrediënt 1" value="400 g"><input class="input" type="text" placeholder="Ingrediënt" aria-label="Ingrediënt 1" value="kikkererwten"><button class="icon-btn" type="button" aria-label="Verwijder ingrediënt 1">✕</button></li><li class="dynamic-row"><input class="input input-amount" type="text" placeholder="Hoeveelheid" aria-label="Hoeveelheid ingrediënt 2" value="2"><input class="input" type="text" placeholder="Ingrediënt" aria-label="Ingrediënt 2" value="uien"><button class="icon-btn" type="button" aria-label="Verwijder ingrediënt 2">✕</button></li><li class="dynamic-row"><input class="input input-amount" type="text" placeholder="Hoeveelheid" aria-label="Hoeveelheid ingrediënt 3" value=""><input class="input" type="text" placeholder="Ingrediënt" aria-label="Ingrediënt 3" value=""><button class="icon-btn" type="button" aria-label="Verwijder ingrediënt 3">✕</button></li></ul>
+        <button class="btn btn-outline btn-sm" type="button">Ingrediënt toevoegen</button>
+      </div>
+    </section>
+
+    <section class="card form-section" aria-labelledby="stepTitle">
+      <div class="card-body">
+        <h2 class="panel-title" id="stepTitle"><span class="tab-num" aria-hidden="true">3</span> Bereidingsstappen</h2>
+        <ol class="dynamic-list"><li class="dynamic-row"><span class="step-number" aria-hidden="true">1</span><textarea class="input" rows="2" placeholder="Beschrijf stap 1…" aria-label="Stap 1">Verhit olie in een pan.</textarea><button class="icon-btn" type="button" aria-label="Verwijder stap 1">✕</button></li><li class="dynamic-row"><span class="step-number" aria-hidden="true">2</span><textarea class="input" rows="2" placeholder="Beschrijf stap 2…" aria-label="Stap 2"></textarea><button class="icon-btn" type="button" aria-label="Verwijder stap 2">✕</button></li></ol>
+        <button class="btn btn-outline btn-sm" type="button">Stap toevoegen</button>
+      </div>
+    </section>
+
+    <div class="form-actions">
+      <a class="btn btn-ghost" href="dashboard.html">Annuleren</a>
+      <button class="btn btn-primary" type="submit">Recept opslaan</button>
+    </div>
+  </form>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner"><span>GLR Food Freaks: stop de ontkoking.</span><span>Schoolproject</span></div>
+</footer>
+</body>
+</html>

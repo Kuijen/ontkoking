@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Mijn keuken – Food Freaks</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme.js"></script>
+  <script src="js/auth.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Naar de inhoud</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">GLR <span>Food Freaks</span></a>
+    <input class="nav-check" type="checkbox" id="navCheck" aria-label="Menu openen">
+    <label class="nav-toggle" for="navCheck" aria-hidden="true">☰</label>
+    <nav class="site-nav" aria-label="Hoofdmenu">
+      <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="recepten.html">Recepten</a></li><li><a href="nieuw-recept.html">Toevoegen</a></li><li><a href="dashboard.html" aria-current="page">Mijn keuken</a></li><li hidden><a href="admin.html">Admin</a></li></ul>
+      <div class="nav-user"><a class="btn btn-outline btn-sm" href="login.html">Inloggen</a></div>
+    </nav>
+  </div>
+</header>
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <h1>Mijn keuken</h1>
+    <p>Je favorieten en je eigen recepten op één plek.</p>
+  </div>
+</section>
+
+<main id="main" class="container">
+  <section class="stats" aria-label="Overzicht">
+    <div class="stat"><span class="stat-value">3</span><span class="stat-label">Mijn recepten</span></div>
+    <div class="stat"><span class="stat-value">1</span><span class="stat-label">Concepten</span></div>
+    <div class="stat"><span class="stat-value">2</span><span class="stat-label">Favorieten</span></div>
+  </section>
+
+  <div class="dash-grid">
+    <section class="section" aria-labelledby="favTitle">
+      <div class="section-heading"><h2 id="favTitle">Mijn favorieten</h2></div>
+      <div class="grid grid-compact">
+        <article class="card recipe-card">
+          <a class="recipe-link" href="recept-detail.html">
+            <img class="recipe-img" src="img/kippenfilets.webp" alt="" loading="lazy">
+            <div class="recipe-info">
+              <span class="badge badge-soft">Vlees</span>
+              <h3 class="recipe-title">Airfryer kippenfilets</h3>
+              <span class="stars" role="img" aria-label="5 van 5 sterren">★★★★★</span>
+              <p class="recipe-meta">20 min</p>
+            </div>
+          </a>
+        </article>
+        <article class="card recipe-card">
+          <a class="recipe-link" href="recept-detail.html">
+            <img class="recipe-img" src="img/zalm.avif" alt="" loading="lazy">
+            <div class="recipe-info">
+              <span class="badge badge-soft">Vis</span>
+              <h3 class="recipe-title">Zalm uit de oven</h3>
+              <span class="stars" role="img" aria-label="4 van 5 sterren">★★★★☆</span>
+              <p class="recipe-meta">22 min</p>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <div>
+      <section class="section" aria-labelledby="mineTitle">
+        <div class="section-heading"><h2 id="mineTitle">Mijn recepten</h2><a class="btn btn-primary btn-sm" href="nieuw-recept.html">Nieuw recept</a></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th scope="col">Titel</th><th scope="col">Status</th><th scope="col">Acties</th></tr></thead>
+          <tbody><tr><td class="cell-title">Snelle vega curry</td><td><span class="badge badge-success">Gepubliceerd</span></td><td><div class="cell-actions"><a class="btn btn-outline btn-sm" href="recept-detail.html">Bekijk</a><a class="btn btn-outline btn-sm" href="nieuw-recept.html">Bewerk</a><button class="btn btn-danger btn-sm" type="button">Verwijder</button></div></td></tr><tr><td class="cell-title">Romige pompoensoep</td><td><span class="badge badge-success">Gepubliceerd</span></td><td><div class="cell-actions"><a class="btn btn-outline btn-sm" href="recept-detail.html">Bekijk</a><a class="btn btn-outline btn-sm" href="nieuw-recept.html">Bewerk</a><button class="btn btn-danger btn-sm" type="button">Verwijder</button></div></td></tr><tr><td class="cell-title">Zalm uit de oven</td><td><span class="badge badge-muted">Concept</span></td><td><div class="cell-actions"><a class="btn btn-outline btn-sm" href="recept-detail.html">Bekijk</a><a class="btn btn-outline btn-sm" href="nieuw-recept.html">Bewerk</a><button class="btn btn-danger btn-sm" type="button">Verwijder</button></div></td></tr></tbody>
+        </table></div>
+      </section>
+
+      <section class="section" aria-labelledby="comTitle">
+        <div class="section-heading"><h2 id="comTitle">Nieuw van de community</h2></div>
+        <div class="card card-body"><ul class="list-plain">
+          <li><a href="recept-detail.html">Airfryer gehaktballetjes</a><span class="recipe-meta">door Bekkeer</span></li>
+          <li><a href="recept-detail.html">Mediterrane groentestoof</a><span class="recipe-meta">door Taan</span></li>
+        </ul></div>
+      </section>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner"><span>GLR Food Freaks: stop de ontkoking.</span><span>Schoolproject</span></div>
+</footer>
+</body>
+</html>
