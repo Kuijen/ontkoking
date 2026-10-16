@@ -1,111 +1,75 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>GLR Food Freaks – Food Freaks</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/theme.js"></script>
-  <script src="js/auth.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLR Food Freaks</title>
 </head>
 <body>
-<a class="skip-link" href="#main">Naar de inhoud</a>
-<header class="site-header">
-  <div class="header-inner">
-    <a class="brand" href="index.html">GLR <span>Food Freaks</span></a>
-    <input class="nav-check" type="checkbox" id="navCheck" aria-label="Menu openen">
-    <label class="nav-toggle" for="navCheck" aria-hidden="true">☰</label>
-    <nav class="site-nav" aria-label="Hoofdmenu">
-      <ul class="nav-links"><li><a href="index.html" aria-current="page">Home</a></li><li><a href="recepten.html">Recepten</a></li><li><a href="nieuw-recept.html">Toevoegen</a></li><li><a href="dashboard.html">Mijn keuken</a></li><li hidden><a href="admin.html">Admin</a></li></ul>
-      <div class="nav-user"><a class="btn btn-outline btn-sm" href="login.html">Inloggen</a></div>
-    </nav>
-  </div>
-</header>
-<main id="main">
-  <section class="hero" aria-labelledby="heroTitle">
-    <div class="hero-inner">
-      <div>
-        <h1 id="heroTitle">Stop de <em>ontkoking</em></h1>
-        <p>Ontdek recepten van de community, bewaar je favorieten en deel je eigen gerechten. Gewoon eten dat klopt, zonder overgekookte groenten.</p>
-        <a href="recepten.html" class="btn btn-primary">Bekijk alle recepten</a>
-      </div>
-      <img class="hero-img" src="img/champings.jpg" alt="Pita met groenteshoarma, gnocchisalade en romige pasta">
-    </div>
-  </section>
 
-  <section class="searchbar" aria-label="Recepten zoeken">
-    <div class="searchbar-inner">
-      <form class="search-row" role="search" action="recepten.html">
-        <label class="visually-hidden" for="searchInput">Zoek recepten</label>
-        <input type="search" id="searchInput" name="q" class="input" placeholder="Zoek op titel of ingrediënt…">
-        <button class="btn btn-primary" type="submit">Zoeken</button>
-      </form>
-      <div class="quick-filters">
-        <span>Snel filteren:</span>
-        <a class="chip" href="recepten.html">#Budget</a>
-        <a class="chip" href="recepten.html">#Snel</a>
-        <a class="chip" href="recepten.html">#Vega</a>
-        <a class="chip" href="recepten.html">#Diner</a>
-      </div>
-    </div>
-  </section>
+    <a href="#main" class="skip-link">Naar de inhoud</a>
+  
+    <header>
+        <a href="index.html" class="logo">GLR Food Freaks</a>
+        
+        <input type="checkbox" id="navCheck">
+        <label for="navCheck">☰</label>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="recepten.html">Recepten</a></li>
+                <li><a href="nieuw-recept.html">Toevoegen</a></li>
+                <li><a href="dashboard.html">Mijn keuken</a></li>
+                <li hidden><a href="admin.html">Admin</a></li>
+            </ul>
+            <a href="login.html" class="btn-login">Inloggen</a>
+        </nav>
+    </header>
 
-  <section class="container" aria-labelledby="featuredTitle">
-    <div class="section-heading">
-      <h2 id="featuredTitle">Uitgelichte recepten</h2>
-      <a class="btn btn-ghost btn-sm" href="recepten.html">Alles bekijken</a>
-    </div>
-    <div class="grid">
-      <article class="card recipe-card">
-        <a class="recipe-link" href="recept-detail.html">
-          <img class="recipe-img" src="img/kippenfilets.webp" alt="" loading="lazy">
-          <div class="recipe-info">
-            <span class="badge badge-soft">Vlees</span>
-            <h3 class="recipe-title">Airfryer kippenfilets</h3>
-            <span class="stars" role="img" aria-label="5 van 5 sterren">★★★★★</span>
-            <p class="recipe-meta">20 min</p>
-          </div>
-        </a>
-      </article>
-      <article class="card recipe-card">
-        <a class="recipe-link" href="recept-detail.html">
-          <img class="recipe-img" src="img/pompoensoep.avif" alt="" loading="lazy">
-          <div class="recipe-info">
-            <span class="badge badge-soft">Soep</span>
-            <h3 class="recipe-title">Romige pompoensoep</h3>
-            <span class="stars" role="img" aria-label="5 van 5 sterren">★★★★★</span>
-            <p class="recipe-meta">40 min</p>
-          </div>
-        </a>
-      </article>
-      <article class="card recipe-card">
-        <a class="recipe-link" href="recept-detail.html">
-          <img class="recipe-img" src="img/vega-curry.jpg" alt="" loading="lazy">
-          <div class="recipe-info">
-            <span class="badge badge-soft">Vega</span>
-            <h3 class="recipe-title">Snelle vega curry</h3>
-            <span class="stars" role="img" aria-label="4 van 5 sterren">★★★★☆</span>
-            <p class="recipe-meta">25 min</p>
-          </div>
-        </a>
-      </article>
-      <article class="card recipe-card">
-        <a class="recipe-link" href="recept-detail.html">
-          <img class="recipe-img" src="img/zalm.avif" alt="" loading="lazy">
-          <div class="recipe-info">
-            <span class="badge badge-soft">Vis</span>
-            <h3 class="recipe-title">Zalm uit de oven</h3>
-            <span class="stars" role="img" aria-label="4 van 5 sterren">★★★★☆</span>
-            <p class="recipe-meta">22 min</p>
-          </div>
-        </a>
-      </article>
-    </div>
-  </section>
-</main>
-<footer class="site-footer">
-  <div class="footer-inner"><span>GLR Food Freaks: stop de ontkoking.</span><span>Schoolproject</span></div>
-</footer>
-</body>
-</html>
+    <main id="main">
+        
+        <section class="hero">
+            <div>
+                <h1>Stop de <em>ontkoking</em></h1>
+                <p>Ontdek recepten van de community, bewaar je favorieten en deel je eigen gerechten. Gewoon eten dat klopt, zonder overgekookte groenten.</p>
+                <a href="recepten.html" class="btn">Bekijk alle recepten</a>
+            </div>
+            <img src="img/champings.jpg" alt="Pita met groenteshoarma, gnocchisalade en romige pasta">
+        </section>
+
+        <section class="search-section">
+            <form action="recepten.html" method="get">
+                <label for="searchInput">Zoek recepten</label>
+                <input type="search" id="searchInput" name="q" placeholder="Zoek op titel of ingrediënt…">
+                <button type="submit">Zoeken</button>
+            </form>
+            
+            <div class="tags">
+                <span>Snel filteren:</span>
+                <a href="recepten.html?tag=budget">#Budget</a>
+                <a href="recepten.html?tag=snel">#Snel</a>
+                <a href="recepten.html?tag=vega">#Vega</a>
+                <a href="recepten.html?tag=diner">#Diner</a>
+            </div>
+        </section>
+
+        <section class="featured-recipes">
+            <header>
+                <h2>Uitgelichte recepten</h2>
+                <a href="recepten.html">Alles bekijken</a>
+            </header>
+
+            <div class="recipe-grid">
+                
+                <article class="recipe-card">
+                    <a href="recept-detail.html">
+                        <img src="img/kippenfilets.webp" alt="Airfryer kippenfilets">
+                    </a>
+                    <div class="recipe-info">
+                        <span class="category">Vlees</span>
+                        <h3>Airfryer kippenfilets</h3>
+                        <div class="rating">★★★★★</div>
+                        <p class="time">20 min</p>
+                    </div>
+                </article>
