@@ -1,63 +1,203 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>Beheer – Food Freaks</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/theme.js"></script>
-  <script src="js/auth.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark light">
+    <title>Beheer – Food Freaks</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js" defer></script>
 </head>
 <body>
-<a class="skip-link" href="#main">Naar de inhoud</a>
-<header class="site-header">
-  <div class="header-inner">
-    <a class="brand" href="index.html">GLR <span>Food Freaks</span></a>
-    <input class="nav-check" type="checkbox" id="navCheck" aria-label="Menu openen">
-    <label class="nav-toggle" for="navCheck" aria-hidden="true">☰</label>
-    <nav class="site-nav" aria-label="Hoofdmenu">
-      <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="recepten.html">Recepten</a></li><li><a href="nieuw-recept.html">Toevoegen</a></li><li><a href="dashboard.html">Mijn keuken</a></li><li hidden><a href="admin.html" aria-current="page">Admin</a></li></ul>
-      <div class="nav-user"><a class="btn btn-outline btn-sm" href="login.html">Inloggen</a></div>
-    </nav>
-  </div>
-</header>
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <h1>Beheer</h1>
-    <p>Gebruikers, recepten en de review-wachtrij.</p>
-  </div>
-</section>
 
-<main id="main" class="container">
-  <div class="admin-grid">
-    <div>
-      <section class="section" aria-labelledby="usersTitle">
-        <div class="section-heading"><h2 id="usersTitle">Gebruikers</h2></div>
-        <div class="table-wrap"><table>
-          <thead><tr><th scope="col">Gebruiker</th><th scope="col">Rol</th><th scope="col">Acties</th></tr></thead>
-          <tbody><tr><td class="cell-title">ikbenadmin123</td><td><span class="badge badge-accent">admin</span></td><td><span class="recipe-meta">Hoofdaccount</span></td></tr><tr><td class="cell-title">Bekkeer</td><td><span class="badge badge-muted">user</span></td><td><div class="cell-actions"><button class="btn btn-outline btn-sm" type="button">Maak admin</button><button class="btn btn-danger btn-sm" type="button">Verwijder</button></div></td></tr><tr><td class="cell-title">Taan</td><td><span class="badge badge-muted">user</span></td><td><div class="cell-actions"><button class="btn btn-outline btn-sm" type="button">Maak admin</button><button class="btn btn-danger btn-sm" type="button">Verwijder</button></div></td></tr></tbody>
-        </table></div>
-      </section>
+    <a class="skip-link" href="#main">Naar de inhoud</a>
 
-      <section class="section" aria-labelledby="contentTitle">
-        <div class="section-heading"><h2 id="contentTitle">Recepten</h2></div>
-        <div class="table-wrap"><table>
-          <thead><tr><th scope="col">Recept</th><th scope="col">Auteur</th><th scope="col">Status</th><th scope="col">Acties</th></tr></thead>
-          <tbody><tr><td class="cell-title">Snelle vega curry</td><td>ikbenadmin123</td><td><span class="badge badge-success">Gepubliceerd</span></td><td><div class="cell-actions"><button class="btn btn-outline btn-sm" type="button">Zet op concept</button><a class="btn btn-outline btn-sm" href="recept-detail.html">Bekijk</a><a class="btn btn-outline btn-sm" href="nieuw-recept.html">Bewerk</a><button class="btn btn-danger btn-sm" type="button">Verwijder</button></div></td></tr><tr><td class="cell-title">Airfryer kippenfilets</td><td>ikbenadmin123</td><td><span class="badge badge-success">Gepubliceerd</span></td><td><div class="cell-actions"><button class="btn btn-outline btn-sm" type="button">Zet op concept</button><a class="btn btn-outline btn-sm" href="recept-detail.html">Bekijk</a><a class="btn btn-outline btn-sm" href="nieuw-recept.html">Bewerk</a><button class="btn btn-danger btn-sm" type="button">Verwijder</button></div></td></tr><tr><td class="cell-title">Romige pompoensoep</td><td>Bekkeer</td><td><span class="badge badge-success">Gepubliceerd</span></td><td><div class="cell-actions"><button class="btn btn-outline btn-sm" type="button">Zet op concept</button><a class="btn btn-outline btn-sm" href="recept-detail.html">Bekijk</a><a class="btn btn-outline btn-sm" href="nieuw-recept.html">Bewerk</a><button class="btn btn-danger btn-sm" type="button">Verwijder</button></div></td></tr><tr><td class="cell-title">Zalm uit de oven</td><td>Taan</td><td><span class="badge badge-muted">Concept</span></td><td><div class="cell-actions"><button class="btn btn-outline btn-sm" type="button">Publiceer</button><a class="btn btn-outline btn-sm" href="recept-detail.html">Bekijk</a><a class="btn btn-outline btn-sm" href="nieuw-recept.html">Bewerk</a><button class="btn btn-danger btn-sm" type="button">Verwijder</button></div></td></tr></tbody>
-        </table></div>
-      </section>
-    </div>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="index.html">GLR <span>Food Freaks</span></a>
+            
+            <input class="nav-check" type="checkbox" id="navCheck" aria-label="Menu openen">
+            <label class="nav-toggle" for="navCheck" aria-hidden="true">☰</label>
+            
+            <nav class="site-nav" aria-label="Hoofdmenu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="recepten.html">Recepten</a></li>
+                    <li><a href="nieuw-recept.html">Toevoegen</a></li>
+                    <li><a href="dashboard.html">Mijn keuken</a></li>
+                    <li hidden><a href="admin.html" aria-current="page">Admin</a></li>
+                </ul>
+                <div class="nav-user">
+                    <a class="btn btn-outline btn-sm" href="login.html">Inloggen</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-    <aside aria-labelledby="queueTitle">
-      <div class="section-heading"><h2 id="queueTitle">Review-wachtrij</h2></div>
-      <div class="stats"><div class="stat stat-highlight"><span class="stat-value">1</span><span class="stat-label">Te controleren recepten</span></div><div class="stat"><span class="stat-value">3</span><span class="stat-label">Gepubliceerde recepten</span></div><div class="stat"><span class="stat-value">4</span><span class="stat-label">Totaal aantal recepten</span></div><div class="stat"><span class="stat-value">3</span><span class="stat-label">Geregistreerde gebruikers</span></div></div>
-      <a href="nieuw-recept.html" class="btn btn-primary btn-block">Nieuw recept</a>
-    </aside>
-  </div>
-</main>
-<footer class="site-footer">
-  <div class="footer-inner"><span>GLR Food Freaks: stop de ontkoking.</span><span>Schoolproject</span></div>
-</footer>
+    <section class="page-hero">
+        <div class="page-hero-inner">
+            <h1>Beheer</h1>
+            <p>Gebruikers, recepten en de review-wachtrij.</p>
+        </div>
+    </section>
+
+    <main id="main" class="container">
+        <div class="admin-grid">
+            <div>
+                <section class="section" aria-labelledby="usersTitle">
+                    <div class="section-heading">
+                        <h2 id="usersTitle">Gebruikers</h2>
+                    </div>
+                    
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Gebruiker</th>
+                                    <th scope="col">Rol</th>
+                                    <th scope="col">Acties</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="cell-title">ikbenadmin123</td>
+                                    <td><span class="badge badge-accent">admin</span></td>
+                                    <td><span class="recipe-meta">Hoofdaccount</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="cell-title">Bekkeer</td>
+                                    <td><span class="badge badge-muted">user</span></td>
+                                    <td>
+                                        <div class="cell-actions">
+                                            <button class="btn btn-outline btn-sm" type="button">Maak admin</button>
+                                            <button class="btn btn-danger btn-sm" type="button">Verwijder</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="cell-title">Taan</td>
+                                    <td><span class="badge badge-muted">user</span></td>
+                                    <td>
+                                        <div class="cell-actions">
+                                            <button class="btn btn-outline btn-sm" type="button">Maak admin</button>
+                                            <button class="btn btn-danger btn-sm" type="button">Verwijder</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="section" aria-labelledby="contentTitle">
+                    <div class="section-heading">
+                        <h2 id="contentTitle">Recepten</h2>
+                    </div>
+                    
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Recept</th>
+                                    <th scope="col">Auteur</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Acties</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="cell-title">Snelle vega curry</td>
+                                    <td>ikbenadmin123</td>
+                                    <td><span class="badge badge-success">Gepubliceerd</span></td>
+                                    <td>
+                                        <div class="cell-actions">
+                                            <button class="btn btn-outline btn-sm" type="button">Zet op concept</button>
+                                            <a class="btn btn-outline btn-sm" href="recept-detail.html">Bekijk</a>
+                                            <a class="btn btn-outline btn-sm" href="nieuw-recept.html">Bewerk</a>
+                                            <button class="btn btn-danger btn-sm" type="button">Verwijder</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="cell-title">Airfryer kippenfilets</td>
+                                    <td>ikbenadmin123</td>
+                                    <td><span class="badge badge-success">Gepubliceerd</span></td>
+                                    <td>
+                                        <div class="cell-actions">
+                                            <button class="btn btn-outline btn-sm" type="button">Zet op concept</button>
+                                            <a class="btn btn-outline btn-sm" href="recept-detail.html">Bekijk</a>
+                                            <a class="btn btn-outline btn-sm" href="nieuw-recept.html">Bewerk</a>
+                                            <button class="btn btn-danger btn-sm" type="button">Verwijder</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="cell-title">Romige pompoensoep</td>
+                                    <td>Bekkeer</td>
+                                    <td><span class="badge badge-success">Gepubliceerd</span></td>
+                                    <td>
+                                        <div class="cell-actions">
+                                            <button class="btn btn-outline btn-sm" type="button">Zet op concept</button>
+                                            <a class="btn btn-outline btn-sm" href="recept-detail.html">Bekijk</a>
+                                            <a class="btn btn-outline btn-sm" href="nieuw-recept.html">Bewerk</a>
+                                            <button class="btn btn-danger btn-sm" type="button">Verwijder</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="cell-title">Zalm uit de oven</td>
+                                    <td>Taan</td>
+                                    <td><span class="badge badge-muted">Concept</span></td>
+                                    <td>
+                                        <div class="cell-actions">
+                                            <button class="btn btn-outline btn-sm" type="button">Publiceer</button>
+                                            <a class="btn btn-outline btn-sm" href="recept-detail.html">Bekijk</a>
+                                            <a class="btn btn-outline btn-sm" href="nieuw-recept.html">Bewerk</a>
+                                            <button class="btn btn-danger btn-sm" type="button">Verwijder</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </div>
+
+            <aside aria-labelledby="queueTitle">
+                <div class="section-heading">
+                    <h2 id="queueTitle">Review-wachtrij</h2>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat stat-highlight">
+                        <span class="stat-value">1</span>
+                        <span class="stat-label">Te controleren recepten</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">3</span>
+                        <span class="stat-label">Gepubliceerde recepten</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">4</span>
+                        <span class="stat-label">Totaal aantal recepten</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">3</span>
+                        <span class="stat-label">Geregistreerde gebruikers</span>
+                    </div>
+                </div>
+                <a href="nieuw-recept.html" class="btn btn-primary btn-block">Nieuw recept</a>
+            </aside>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <span>stop de ontkoking.</span>
+        </div>
+    </footer>
 </body>
 </html>
