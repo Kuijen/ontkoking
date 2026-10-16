@@ -1,83 +1,161 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="color-scheme" content="dark light">
-  <title>Snelle vega curry – Food Freaks</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/theme.js"></script>
-  <script src="js/auth.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark light">
+    <title>Snelle vega curry – Food Freaks</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js" defer></script>
 </head>
 <body>
-<a class="skip-link" href="#main">Naar de inhoud</a>
-<header class="site-header">
-  <div class="header-inner">
-    <a class="brand" href="index.html">GLR <span>Food Freaks</span></a>
-    <input class="nav-check" type="checkbox" id="navCheck" aria-label="Menu openen">
-    <label class="nav-toggle" for="navCheck" aria-hidden="true">☰</label>
-    <nav class="site-nav" aria-label="Hoofdmenu">
-      <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="recepten.html" aria-current="page">Recepten</a></li><li><a href="nieuw-recept.html">Toevoegen</a></li><li><a href="dashboard.html">Mijn keuken</a></li><li hidden><a href="admin.html">Admin</a></li></ul>
-      <div class="nav-user"><a class="btn btn-outline btn-sm" href="login.html">Inloggen</a></div>
-    </nav>
-  </div>
-</header>
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <a class="back-link" href="recepten.html">Terug naar recepten</a>
-    <h1>Snelle vega curry</h1>
-    <p>Een roomse curry in 25 minuten.</p>
-  </div>
-</section>
 
-<main id="main" class="container">
-  <article class="detail">
-    <aside class="detail-side" aria-label="Receptinformatie">
-      <img class="detail-img" src="img/vega-curry.jpg" alt="Foto van snelle vega curry">
-      <div class="meta-list">
-        <span class="badge badge-soft">25 min</span><span class="badge badge-soft">Vega</span>
-        <span class="badge badge-accent">vegan</span><span class="badge badge-accent">glutenvrij</span><span class="badge badge-accent">lactosevrij</span>
-      </div>
-      <div class="author">
-        <span class="avatar" aria-hidden="true">I</span>
-        <div><p class="author-name">ikbenadmin123</p><p class="recipe-meta">Auteur</p></div>
-      </div>
-      <button class="btn btn-primary btn-block" type="button">Opslaan in favorieten</button>
-      <a class="btn btn-outline btn-block" href="nieuw-recept.html">Recept bewerken</a>
-    </aside>
+    <a class="skip-link" href="#main">Naar de inhoud</a>
 
-    <div class="detail-main">
-      <h1>Snelle vega curry</h1>
-      <span class="stars" role="img" aria-label="4 van 5 sterren">★★★★☆</span>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="index.html">GLR <span>Food Freaks</span></a>
 
-      <section aria-labelledby="ingredientsTitle">
-        <h2 id="ingredientsTitle">Ingrediënten</h2>
-        <ul class="checklist">
-          <li><label class="check"><input type="checkbox"><span>400 g kikkererwten</span></label></li><li><label class="check"><input type="checkbox"><span>2 uien</span></label></li><li><label class="check"><input type="checkbox"><span>3 tenen knoflook</span></label></li><li><label class="check"><input type="checkbox"><span>200 ml kokosmelk</span></label></li><li><label class="check"><input type="checkbox"><span>2 el currypoeder</span></label></li>
-        </ul>
-      </section>
+            <input class="nav-check" type="checkbox" id="navCheck" aria-label="Menu openen">
+            <label class="nav-toggle" for="navCheck" aria-hidden="true">☰</label>
 
-      <section aria-labelledby="stepsTitle">
-        <h2 id="stepsTitle">Bereidingsstappen</h2>
-        <ol class="step-list">
-          <li>Verhit olie in een pan.</li><li>Bak de ui en knoflook 3 minuten.</li><li>Voeg currypoeder en kikkererwten toe.</li><li>Giet de kokosmelk erbij en laat 10 minuten sudderen.</li>
-        </ol>
-      </section>
+            <nav class="site-nav" aria-label="Hoofdmenu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="recepten.html" aria-current="page">Recepten</a></li>
+                    <li><a href="nieuw-recept.html">Toevoegen</a></li>
+                    <li><a href="dashboard.html">Mijn keuken</a></li>
+                    <li hidden><a href="admin.html">Admin</a></li>
+                </ul>
+                <div class="nav-user">
+                    <a class="btn btn-outline btn-sm" href="login.html">Inloggen</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-      <section aria-labelledby="commentsTitle">
-        <h2 id="commentsTitle">Reacties</h2>
-        <div class="comment"><span class="avatar" aria-hidden="true">B</span><div><p class="comment-name">Bekkeer</p><p class="comment-text">Heerlijk recept!</p></div></div><div class="comment"><span class="avatar" aria-hidden="true">T</span><div><p class="comment-name">Taan</p><p class="comment-text">Snel en makkelijk.</p></div></div>
-        <form class="comment-form">
-          <label class="visually-hidden" for="commentInput">Schrijf een reactie</label>
-          <input class="input" id="commentInput" type="text" placeholder="Schrijf een reactie…">
-          <button class="btn btn-primary" type="button">Plaatsen</button>
-        </form>
-      </section>
-    </div>
-  </article>
-</main>
-<footer class="site-footer">
-  <div class="footer-inner"><span>GLR Food Freaks: stop de ontkoking.</span><span>Schoolproject</span></div>
-</footer>
+    <section class="page-hero">
+        <div class="page-hero-inner">
+            <a class="back-link" href="recepten.html">Terug naar recepten</a>
+            <h1>Snelle vega curry</h1>
+            <p>Een romige curry in 25 minuten.</p>
+        </div>
+    </section>
+
+    <main id="main" class="container">
+        <article class="detail">
+
+            <aside class="detail-side" aria-label="Receptinformatie">
+                <img class="detail-img" src="img/vega-curry.jpg" alt="Foto van snelle vega curry">
+
+                <div class="meta-list">
+                    <span class="badge badge-soft">25 min</span>
+                    <span class="badge badge-soft">Vega</span>
+                    <span class="badge badge-accent">vegan</span>
+                    <span class="badge badge-accent">glutenvrij</span>
+                    <span class="badge badge-accent">lactosevrij</span>
+                </div>
+
+                <div class="author">
+                    <span class="avatar" aria-hidden="true">I</span>
+                    <div>
+                        <p class="author-name">ikbenadmin123</p>
+                        <p class="recipe-meta">Auteur</p>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-block" type="button">Opslaan in favorieten</button>
+                <a class="btn btn-outline btn-block" href="nieuw-recept.html">Recept bewerken</a>
+            </aside>
+
+            <div class="detail-main">
+                <h1>Snelle vega curry</h1>
+                <span class="stars" role="img" aria-label="4 van 5 sterren">★★★★☆</span>
+
+                <section aria-labelledby="ingredientsTitle">
+                    <h2 id="ingredientsTitle">Ingrediënten</h2>
+                    <ul class="checklist">
+                        <li>
+                            <label class="check">
+                                <input type="checkbox">
+                                <span>400 g kikkererwten</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="check">
+                                <input type="checkbox">
+                                <span>2 uien</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="check">
+                                <input type="checkbox">
+                                <span>3 tenen knoflook</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="check">
+                                <input type="checkbox">
+                                <span>200 ml kokosmelk</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="check">
+                                <input type="checkbox">
+                                <span>2 el currypoeder</span>
+                            </label>
+                        </li>
+                    </ul>
+                </section>
+
+                <section aria-labelledby="stepsTitle">
+                    <h2 id="stepsTitle">Bereidingsstappen</h2>
+                    <ol class="step-list">
+                        <li>Verhit olie in een pan.</li>
+                        <li>Bak de ui en knoflook 3 minuten.</li>
+                        <li>Voeg currypoeder en kikkererwten toe.</li>
+                        <li>Giet de kokosmelk erbij en laat 10 minuten sudderen.</li>
+                    </ol>
+                </section>
+
+                <section aria-labelledby="commentsTitle">
+                    <h2 id="commentsTitle">Reacties</h2>
+
+                    <div class="comment">
+                        <span class="avatar" aria-hidden="true">B</span>
+                        <div>
+                            <p class="comment-name">Bekkeer</p>
+                            <p class="comment-text">Heerlijk recept!</p>
+                        </div>
+                    </div>
+
+                    <div class="comment">
+                        <span class="avatar" aria-hidden="true">T</span>
+                        <div>
+                            <p class="comment-name">Taan</p>
+                            <p class="comment-text">Snel en makkelijk.</p>
+                        </div>
+                    </div>
+
+                    <form class="comment-form" action="#" method="post">
+                        <label class="visually-hidden" for="commentInput">Schrijf een reactie</label>
+                        <input class="input" id="commentInput" type="text" placeholder="Schrijf een reactie…" required>
+                        <button class="btn btn-primary" type="submit">Plaatsen</button>
+                    </form>
+                </section>
+            </div>
+
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <span>stop de ontkoking.</span>
+        </div>
+    </footer>
+
 </body>
 </html>
