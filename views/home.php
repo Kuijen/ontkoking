@@ -7,7 +7,7 @@
                 <p>Ontdek recepten van de community, bewaar je favorieten en deel je eigen gerechten. Gewoon eten dat klopt, zonder overgekookte groenten.</p>
                 <a href="recepten.php" class="btn btn-primary">Bekijk alle recepten</a>
             </div>
-            <img class="hero-img" src="img/champings.jpg" alt="Een gerecht uit de community">
+            <img class="hero-img" src="pulled-chicken.jpg" alt="Een gerecht uit de community">
         </div>
     </section>
 
